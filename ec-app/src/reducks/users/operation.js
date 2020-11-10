@@ -11,6 +11,7 @@ export const lisitenAuthState = () => {
         db.collection("users").doc(uid).get()
           .then(snapshot => {
             const data = snapshot.data();
+
             dispatch(signInAction({
               isSignAction: true,
               role: data.role,
@@ -18,7 +19,6 @@ export const lisitenAuthState = () => {
               username: data.username
             }))
 
-            dispatch(push("/"))
           })
       } else {
         dispatch(push("/signin"))
@@ -96,7 +96,6 @@ export const signUp = (username, email, password, confirmPassword) => {
         }
       })
   }
-
 }
 
 export const signOut = () => {

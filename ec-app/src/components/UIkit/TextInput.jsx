@@ -6,7 +6,7 @@ const TextInput = (props) => {
     <TextField 
       fullWidth={props.fullWidth}
       label={props.label}
-      marigin="dense"
+      margin="dense"
       multiline={props.multiline}
       required={props.required}
       rows={props.rows}
@@ -15,7 +15,6 @@ const TextInput = (props) => {
       onChange={props.onChange}
     />
   )
-
 }
 
 export default TextInput;
