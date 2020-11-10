@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { TextInput, PrimaryButton } from "../components/UIkit";
 import { signUp } from "../reducks/users/operation"
 import { useDispatch } from "react-redux" 
+import { push } from "connected-react-router";
 
 
 const SignUp = () => {
@@ -14,7 +15,6 @@ const SignUp = () => {
 
   const inputUsername = useCallback((event) => {
     setUsername(event.target.value);
-    console.log(username)
   }, [setUsername]);
 
   const inputEmail = useCallback((event) => {
@@ -55,6 +55,9 @@ const SignUp = () => {
           label={"アカウントを登録する"}
           onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
         />
+        <div className="module-spacer--medium"/>
+        <p onClick={() => dispatch(push("/signin"))}>アカウント登録をお持ちの方はこちら</p>
+
       </div>
     </div>
   )
