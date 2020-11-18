@@ -16,7 +16,7 @@ import HistoryIcon from '@material-ui/icons/History';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {db} from "../../firebase";
-import { signOut } from "../../reducks/users/operation"
+import { signOut } from "../../reducks/users/operations";
 
 const useStayles = makeStyles((theme) => ({
   drawer: {
@@ -70,7 +70,10 @@ const CloasbleDrawer = props => {
         classes={{paper: classes.drawerPaper}}
         ModalProps={{keepMounted: true}}
       >
-        <div>
+        <div
+          onClose={(e) => props.onClose(e)}
+          onKeyDown={(e) => props.onClose(e)}
+        >
           <div className={classes.searchField}>
             <TextInput 
               fullWidth={false} label={"キーワードを入力"} multiline={false}

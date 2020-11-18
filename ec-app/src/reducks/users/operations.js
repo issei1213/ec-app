@@ -2,6 +2,17 @@ import { signInAction, signOutAction } from "./actions";
 import { push } from "connected-react-router";
 import { auth, FirebaseTimestamp, db } from "../../firebase/index"
 
+export const addProductToCart = (addedProduct) => {
+  return async(dispatch, getState) => {
+    const uid = getState().user.id;
+    const cartRef = db.collection("users").doc(uid).collection("cart").doc()
+    addedProduct["cartId"] = cartRef.id;
+    await cartRef.set(addedProduct)
+    dispatch(push("/"))
+
+  }
+}
+
 export const lisitenAuthState = () => {
   return async(dispatch) => {
     return auth.onAuthStateChanged(user => {

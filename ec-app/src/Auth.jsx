@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { lisitenAuthState } from "./reducks/users/operation";
+import { lisitenAuthState } from "./reducks/users/operations";
 import { getIsSignedIn } from "./reducks/users/selectors";
 
 
