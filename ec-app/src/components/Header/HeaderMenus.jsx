@@ -14,7 +14,7 @@ import { push } from 'connected-react-router';
 const HeaderMenus = (props) => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state);
-  const uid = getUserId(selector)
+  const uid = getUserId(selector);
   let productsInCart = getProductInCart(selector);
 
   useEffect(() => {
