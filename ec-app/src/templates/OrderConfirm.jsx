@@ -47,11 +47,7 @@ const OrderConfirm = () => {
         
       </div>
     </section>
-  )
-  console.log('object', object)
-  console.time('object')
-  console.log("object")
-  
+  )  
 }
 
 export default OrderConfirm;
