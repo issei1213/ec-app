@@ -32,7 +32,7 @@ const CartListItem = (props) => {
   const selector = useSelector(state => state);
   const uid = getUserId(selector);
 
-
+console.log('props', props)
   const image = props.product.images[0].path;
   const name = props.product.name;
   const price = props.product.price.toLocaleString();

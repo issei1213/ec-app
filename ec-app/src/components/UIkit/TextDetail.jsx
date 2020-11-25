@@ -1,8 +1,33 @@
 import React from 'react'
+import { makeStyles } from "@material-ui/core/styles"
 
-const TextDetail = () => {
+const useStyles = makeStyles({
+  row: {
+    display: "flex",
+    flexFrow: "row wrap",
+    marginBottom: 16
+  },
+  label: {
+    marginLeft: 0,
+    marginRight: "auto"
+  },
+  value: {
+    fontWeght: 600,
+    marginLeft: "auto",
+    marginRight: 0
+  }
+})
+
+const TextDetail = (props) => {
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.row}>
+      <div className={classes.label}>
+        {props.label}
+      </div>
+      <div className={classes.value}>
+        {props.value}
+      </div>
       
     </div>
   )
