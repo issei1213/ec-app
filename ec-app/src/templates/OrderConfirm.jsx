@@ -6,6 +6,7 @@ import { CartListItem } from "../components/Products/index"
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import { PrimaryButton, TextDetail } from "../components/UIkit"
+import { orderProduct } from "../reducks/products/operation"
 
 const useStyles = makeStyles((theme) => ({
   detailBox: {
@@ -18,12 +19,13 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   orderBox: {
-    border: "1px solid rgba(0, 0, 0, 0.2)",
+    border: "1px solid rgba(0, 0, 0, 0.2)", 
     borderRadius: 4,
     boxShadow: "0 4px 2px 2px rgba(0, 0, 0, 0.2)",
     height: 256,
     margin: "24px auto 16px auto",
-    width: 288
+    width: 288,
+    padding: 16
   }
 }))
 
@@ -38,8 +40,12 @@ const OrderConfirm = () => {
   }, [productInCart]);
 
   const shippingFee = (subtotal >= 10000) ? 0 : 210;
-  const tax = (subtotal + shippingFee) * 0.1;
+  const tax = subtotal * 0.1;
   const total = subtotal + shippingFee + tax;
+
+  const order = useCallback(() => {
+    dispatch(orderProduct(productInCart, total))
+  }, [productInCart, total])
 
   return(
     <section className="c-section-wrapin">
@@ -54,10 +60,11 @@ const OrderConfirm = () => {
         </div>
         <div className={classes.orderBox}>
           <TextDetail label={"商品合計"} value={"¥" + subtotal.toLocaleString()} />
-          <TextDetail label={"送料"} value={"¥" + shippingFee.toLocaleString()} />
           <TextDetail label={"消費税"} value={"¥" + tax} />
+          <TextDetail label={"送料"} value={"¥" + shippingFee.toLocaleString()} />
           <Divider />
-          <TextDetail label={"合計(税込)"} value={"¥" + total} />
+          <TextDetail label={"合計(税込)"} value={"¥" + total.toLocaleString()} />
+          <PrimaryButton label={"注文する"} onClick={order}/>
         </div>
       </div>
     </section>
