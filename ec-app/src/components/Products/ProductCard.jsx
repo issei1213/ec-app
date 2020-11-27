@@ -60,6 +60,7 @@ const ProductCard = (props) => {
   }
 
 
+  console.log("test")
   return(
     <Card className={classes.root}>
       <CardMedia 
