@@ -59,8 +59,6 @@ const ProductCard = (props) => {
     setAnchorEl(null)
   }
 
-
-  console.log("test")
   return(
     <Card className={classes.root}>
       <CardMedia 
