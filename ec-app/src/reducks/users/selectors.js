@@ -2,6 +2,11 @@ import { createSelector } from "reselect";
 
 const userSelector = (state) => state.users;
 
+export const getOrdersHistory = createSelector(
+  [userSelector],
+  state => state.orders
+)
+
 export const getIsSignedIn = createSelector(
   [userSelector],
   state => state.isSignedIn
